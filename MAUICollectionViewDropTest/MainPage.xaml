@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUICollectionViewDropTest.MainPage">
 
-    <Grid >
-        <CollectionView x:Name="dragAndDropTarget" BackgroundColor="AliceBlue" />
+    <Grid ColumnDefinitions="*,*">
+        <Grid Grid.Column="0" x:Name="myGrid" BackgroundColor="MediumOrchid"/>
+        <CollectionView Grid.Column="1" x:Name="myCollectionView" BackgroundColor="MediumSeaGreen" />
     </Grid>
-
 </ContentPage>

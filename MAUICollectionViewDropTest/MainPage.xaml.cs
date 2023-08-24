@@ -11,7 +11,11 @@ namespace MAUICollectionViewDropTest
 
             Loaded += (sender, args) =>
             {
-                dragAndDropTarget.RegisterDrop(Handler?.MauiContext, HandleDrop);
+                // Registering the drop handler on the Grid works fine. The file path is printed when a PDF file is dropped.
+                //myGrid.RegisterDrop(Handler?.MauiContext, HandleDrop);
+
+                // Registering the drop handler on the CollectionView doesn't work on MacCatalyst
+                myCollectionView.RegisterDrop(Handler?.MauiContext, HandleDrop);
             };
         }
 
@@ -22,7 +26,5 @@ namespace MAUICollectionViewDropTest
                 Debug.WriteLine($"Dropped file: {path}");
             }
         }
-
-
     }
 }
