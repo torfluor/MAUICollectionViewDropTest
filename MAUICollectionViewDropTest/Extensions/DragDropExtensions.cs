@@ -1,4 +1,6 @@
-﻿using Microsoft.Maui.Platform;
+﻿#nullable enable
+
+using Microsoft.Maui.Platform;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,5 @@
 ﻿using MAUICollectionViewDropTest.Extensions;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 
 namespace MAUICollectionViewDropTest
@@ -11,20 +12,20 @@ namespace MAUICollectionViewDropTest
 
             Loaded += (sender, args) =>
             {
-                // Registering the drop handler on the Grid works fine. The file path is printed when a PDF file is dropped.
-                //myGrid.RegisterDrop(Handler?.MauiContext, HandleDrop);
-
-                // Registering the drop handler on the CollectionView doesn't work on MacCatalyst
-                myCollectionView.RegisterDrop(Handler?.MauiContext, HandleDrop);
+                myCollectionView.RegisterDrop(Handler?.MauiContext, HandleCollectionViewDrop);
             };
         }
 
-        private async Task HandleDrop(List<string> filePaths)
+        private async Task HandleCollectionViewDrop(List<string> filePaths)
         {
+            if (filePaths.Count == 0) { return; }
+
+            Debug.WriteLine("Paths to files dropped into the CollectionView:");
             foreach (string path in filePaths)
             {
-                Debug.WriteLine($"Dropped file: {path}");
+                Debug.WriteLine($"{path}");
             }
         }
+
     }
 }
